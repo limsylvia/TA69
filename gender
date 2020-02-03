@@ -1,0 +1,10 @@
+set hive.execution.engine = tez;
+set tez.queue.name = sephora_internal;
+
+select count(distinct ddb.card_number) as cnt, gender
+from crm.dim_account cda
+join da_dev.booking_service_dec ddb
+on cda.account_id = ddb.card_number
+where event_name = 
+group by gender
+;
